@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="app">
       <Topbar menuOn={menuOn} setMenuOn={setMenuOn} />
-      <Menu />
+      <Menu menuOn={menuOn} setMenuOn={setMenuOn} />
       <div className="sections">
         <Intro />
         <Portfolio />

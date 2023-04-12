@@ -1,9 +1,9 @@
 import "./menu.scss";
 
-export default function Menu() {
+export default function Menu({ menuOn, setMenuOn }) {
   return (
-    <div className="menu">
-      <ul>
+    <div className={"menu " + (menuOn && "active")}>
+      <ul onClick={() => setMenuOn(false)}>
         <li>
           <a href="#intro">Home</a>
         </li>
