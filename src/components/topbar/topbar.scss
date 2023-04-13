@@ -43,13 +43,14 @@
       }
     }
     .right {
+      margin-right: 20px;
       .hamburger {
         width: 30px;
         height: 23px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-right: 10px;
+
         cursor: pointer;
 
         span {
