@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PortfolioList from "../portfolioList/PortfolioList";
 import "./portfolio.scss";
+import {
+  featuredPortfolio,
+  webPortfolio,
+  mobilePortfolio,
+  designPortfolio,
+  contentPortfolio,
+} from "../../data";
 
 export default function Portfolio() {
   const [selected, setSelected] = useState("featured");
+  const [data, setData] = useState([]);
   const list = [
     {
       id: "featured",
@@ -11,17 +19,40 @@ export default function Portfolio() {
     },
     {
       id: "Web",
-      title: "Web App",
+      title: "Web",
     },
     {
-      id: "Design",
-      title: "UX/UI",
+      id: "mobile",
+      title: "Mobile",
     },
     {
-      id: "Visual Design",
-      title: "Graphics",
+      id: "design",
+      title: "Design",
     },
   ];
+
+  useEffect(() => {
+    switch (selected) {
+      case "featured":
+        setData(featuredPortfolio);
+        break;
+      case "Web":
+        setData(webPortfolio);
+        break;
+      case "mobile":
+        setData(mobilePortfolio);
+        break;
+      case "design":
+        setData(designPortfolio);
+        break;
+      case "content":
+        setData(contentPortfolio);
+        break;
+      default:
+        setData(featuredPortfolio);
+    }
+  }, [selected]);
+
   return (
     <div className="portfolio" id="portfolio">
       <h1>Portfolio</h1>
@@ -36,41 +67,12 @@ export default function Portfolio() {
         ))}
       </ul>
       <div className="container">
-        <div className="item">
-          <img
-            src="https://images.unsplash.com/photo-1478198697312-304b0bd9475f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGFkbWluJTIwcGFuZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-            alt=""
-          />
-          <h3>Admin Panel</h3>
-        </div>
-        <div className="item">
-          <img
-            src="https://images.unsplash.com/photo-1478198697312-304b0bd9475f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGFkbWluJTIwcGFuZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-            alt=""
-          />
-          <h3>Admin Panel</h3>
-        </div>
-        <div className="item">
-          <img
-            src="https://images.unsplash.com/photo-1478198697312-304b0bd9475f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGFkbWluJTIwcGFuZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-            alt=""
-          />
-          <h3>Admin Panel</h3>
-        </div>
-        <div className="item">
-          <img
-            src="https://images.unsplash.com/photo-1478198697312-304b0bd9475f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGFkbWluJTIwcGFuZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-            alt=""
-          />
-          <h3>Admin Panel</h3>
-        </div>
-        <div className="item">
-          <img
-            src="https://images.unsplash.com/photo-1478198697312-304b0bd9475f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGFkbWluJTIwcGFuZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-            alt=""
-          />
-          <h3>Admin Panel</h3>
-        </div>
+        {data.map((d) => (
+          <div className="item">
+            <img src={d.img} alt="" />
+            <h3>{d.title}</h3>
+          </div>
+        ))}
       </div>
     </div>
   );
