@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./work.scss";
 
-export default function Work() {
-  const [currentSlider, setCurrentSlider] = useState(0);
+export default function Works() {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const data = [
     {
       id: "1",
@@ -22,24 +22,22 @@ export default function Work() {
       id: "3",
       icon: "./assets/writing.png",
       title: "Branding",
-      desc: "Description of this project is anout a social and financial aspects research based analysis",
+      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       img: "https://i.pinimg.com/originals/a9/f6/94/a9f69465d972a004ad581f245d6ad581.jpg",
     },
   ];
 
-  const handleClick = (direction) => {
-    direction === "left"
-      ? setCurrentSlider(currentSlider > 0 ? currentSlider - 1 : 2)
-      : setCurrentSlider(
-          currentSlider < data.length - 1 ? currentSlider + 1 : 0
-        );
+  const handleClick = (way) => {
+    way === "left"
+      ? setCurrentSlide(currentSlide > 0 ? currentSlide - 1 : 2)
+      : setCurrentSlide(currentSlide < data.length - 1 ? currentSlide + 1 : 0);
   };
 
   return (
-    <div className="work" id="work">
+    <div className="works" id="works">
       <div
-        className="currentSlider"
-        style={{ transform: `translateX(-${currentSlider * 100}vw)` }}
+        className="slider"
+        style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
       >
         {data.map((d) => (
           <div className="container">
@@ -55,7 +53,7 @@ export default function Work() {
                 </div>
               </div>
               <div className="right">
-                <img src="{d.img}" alt="" />
+                <img src={d.img} alt="" />
               </div>
             </div>
           </div>
