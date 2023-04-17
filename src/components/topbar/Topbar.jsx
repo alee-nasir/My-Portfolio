@@ -8,11 +8,11 @@ export default function Topbar({ menuOn, setMenuOn }) {
       <div className="wrapper">
         <div className="left">
           <a href="#intro" className="logo">
-            {"<AN/>"}
+            {"an."}
           </a>
           <div className="itemContainer">
             <Person className="icon" />
-            <span>+39 350 9488891</span>
+            <span>+393509488891</span>
           </div>
           <div className="itemContainer">
             <Mail className="icon" />
