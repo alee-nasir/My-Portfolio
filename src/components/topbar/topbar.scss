@@ -32,6 +32,10 @@
         display: flex;
         align-items: center;
         margin-left: 30px;
+
+        @include mobile {
+          display: none;
+        }
         .icon {
           font-size: 16px;
           margin-right: 5px;
@@ -66,6 +70,7 @@
   &.active {
     background-color: $mainColor;
     color: white;
+
     .hamburger {
       span {
         &:first-child {
